@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  
+    <base target="_top">
+    <link rel="stylesheet" href="style.css">
+    <!-- <?!= include('Style.html'); ?>  
+  
+  <script>
+  
+      var reader = new FileReader();
+    var TFile;
+    var Wfname,Wmnth,Wyear;
+      // Prevent forms from submitting.
+      function preventFormSubmit() {
+        var forms = document.querySelectorAll('form');
+        for (var i = 0; i < forms.length; i++) {
+          forms[i].addEventListener('submit', function(event) {
+            event.preventDefault();
+          });
+        }
+      }
+      window.addEventListener('load', preventFormSubmit);
+      
+     
+      function handleFormSubmit(formObject) {
+      
+        var newdiv = document.getElementById('output');
+        Wmnth=" ";
+        Wyear=" ";
+        TFile = document.getElementById("file1").files[0];
+        Wfname = document.getElementById("fname").value;
+        Wmnth = document.getElementById("Month_Sel").value
+        Wyear = document.getElementById("Year_sel").value
+        
+        newdiv.innerHTML = "Reached for handling" +  Wmnth + "," + Wyear; //"Data read";
+        
+        reader.readAsDataURL(TFile);
+        //var newdiv3 = document.getElementById('output2');
+        //newdiv3.innerHTML =  Wfname;
+        
+      }
+        reader.onloadend = function (e) {
+        var newdiv3 = document.getElementById('output2');
+        newdiv3.innerHTML =  "Reader Ended " + TFile.name;
+        google.script.run.withSuccessHandler(updateval).processForm(e.target.result,TFile.name,Wmnth,Wyear);
+      }
+      
+      function doit() {
+      var Wopt = document.getElementById("complist").value;
+      google.script.run.withSuccessHandler(OpenAttn).OpenSS(Wopt);
+      }
+      
+      function getreport() {
+      var Wopt = document.getElementById("complist").value;
+      google.script.run.withSuccessHandler(OpenAttn).SalReg(Wopt);
+      }
+      
+      
+      function updateval(Wmessage){
+        var newdiv2 = document.getElementById('output2');
+        alert("Here is returned Message");
+        newdiv2.innerHTML =  Wmessage;
+      
+      }
+      function OpenAttn(Wlurl)
+      { window.open(Wlurl,"blank"); 
+       }
+       
+      function CreateSelect()
+      {google.script.run.withSuccessHandler(SelList).MakeList();
+      }
+      
+      function SelList(Valarray){
+      var ix;
+      for (ix=0;ix<Valarray.length;ix++){
+          var x = document.getElementById("complist");
+          var option = document.createElement("option");
+          option.text = Valarray[ix];
+          x.add(option);
+          }
+      }
+      
+      
+  </script>
+
+ -->
+
+  
+  </head>
+  
+   <body onload="CreateSelect()">
+ 
+  <select name="complist" id="complist">
+    
+  </select> <br>
+  
+   
+   <form name ="myForm" id="myForm" onsubmit="handleFormSubmit(this)" enctype="multipart/form-data">
+     <!-- <label for ="file1"> Select File To Upload </label> -->
+      <input type="file" id="file1" name="file1"> <br><br> 
+      
+      <!-- <label for ="fname"> Enter Employee Name </label> -->
+      
+       <input type="text" id="fname" name="fname"> <br><br>
+      
+       <label for ="Mnth"> Enter Month </label>
+
+      <select name="Month_Sel" id = "Month_Sel">  
+      <option value="01"> 1 </option>
+      <option value="02"> 2 </option>
+      <option value="03"> 3 </option>
+      <option value="04"> 4 </option>
+      <option value="05"> 5 </option>
+      <option value="06"> 6 </option>
+      <option value="07"> 7 </option>
+      <option value="08"> 8 </option>
+      <option value="09"> 9 </option>
+      <option value="10"> 10 </option>
+      <option value="11"> 11 </option>
+      <option value="12"> 12 </option>
+      </select>  
+
+      <select name="Year_sel" id = "Year_sel">  
+      <option value="2018"> 2018 </option>
+      <option value="2019"> 2019 </option>
+      <option value="2020"> 2020 </option>
+      <option value="2021">2021 </option>
+      </select>  
+
+      
+      <input type="button" onclick="doit()"  name = "Process" value ="Online Input Entry"> <br><br>
+      <input type="button" onclick="getreport()" name="Register" value="Salary Register"> 
+      <input type="submit" value="Submit" />
+    </form>
+    
+    <div id="output"></div>
+    <div id="output2"></div>
+  </body>
+  
+</html>
+
+

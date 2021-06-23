@@ -1,0 +1,58 @@
+  <style type="text/css">
+  #menu
+  {
+   margin: 0;
+   padding: 0;
+  }
+  #menu li
+  {
+   margin: 0;
+   padding: 0;
+   list-style: none;
+   float: left;
+  }
+  #menu li a
+  {
+   display: block;
+   margin: 0 1px 0 0;
+   padding: 4px 10px;
+   width: 80px;
+   background: black;
+   color: white;
+   text-align: center;
+  }
+  #menu li a:hover
+  {
+   background: green;
+  }
+  #menu ul
+  {
+   position: absolute;
+   visibility: hidden;
+   margin: 0;
+   padding: 0;
+   background: grey;
+   border: 1px solid white;
+  }
+  #menu ul a
+  {
+   position: relative;
+   display: block;
+   margin: 0;
+   padding: 5px 10px;
+   width: 80px;
+   text-align: left;
+   background: lightgrey;
+   color: black;
+  }
+  #menu ul a:hover
+  {
+   background: #7f7fff;
+  }
+  #select {
+  {font-family:comic sans ms;font-size:9pt;}
+  }
+</style>
+    
+
+
